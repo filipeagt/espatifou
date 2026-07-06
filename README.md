@@ -110,6 +110,15 @@ Espatifou/
 └── README.md
 ```
 
+## Acesso pela Internet com Ngrok
+
+Embora o Espatifou tenha sido projetado para uso em rede local, também é possível disponibilizá-lo pela Internet utilizando ferramentas de tunelamento como o **Ngrok**.
+
+Basta iniciar o servidor local (por exemplo, utilizando o Live Server do Visual Studio Code) e criar um túnel HTTP apontando para a porta utilizada pela aplicação. O Ngrok fornecerá uma URL pública que poderá ser acessada de qualquer lugar, permitindo o streaming da sua biblioteca de músicas diretamente pelo navegador, sem a necessidade de configurar roteadores, abrir portas no firewall ou contratar um serviço de hospedagem.
+
+Essa abordagem é ideal para testes, demonstrações ou para acessar sua biblioteca musical remotamente. Vale lembrar que a velocidade de reprodução dependerá da qualidade da conexão de Internet do computador que está hospedando o Espatifou, já que os arquivos de áudio continuam sendo servidos diretamente a partir da sua máquina.
+
+
 ## Licença
 
 Este projeto foi desenvolvido para fins de estudo e aprendizado sobre desenvolvimento Front-end, manipulação do DOM, indexação de arquivos e reprodução de mídia utilizando apenas tecnologias nativas da web.
