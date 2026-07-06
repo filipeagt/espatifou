@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espatifou</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <aside class="sidebar">
+            <div class="side-header">
+                <img src="img/logo.jpg" alt="Logo" class="logo">
+                <h1>Espatifou</h1>
+                <div class="search-box">
+                    <input type="text" id="search" placeholder="🔍 Músicas, artistas ou pastas...">
+                </div>
+            </div>            
+
+            
+
+            <h2>Playlists</h2>        
+            
+            <ul id="playlist-list">
+
+                <li class="playlist active">
+                    Todas as músicas
+                </li>
+
+            </ul>
+
+        </aside>
+
+        <main class="content">
+
+            <div class="header">
+
+                <div id="playlist-title">
+                    Todas as músicas
+                </div>
+
+                <div id="music-count">
+                    0 músicas
+                </div>
+
+            </div>
+
+            <div class="music-list">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>#</th>
+                            <th>Título</th>
+                            <th>Playlist</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="music-table">
+
+                        <!-- JS -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <footer class="player">
+
+        <div class="music-info">
+
+            <div id="current-title">
+
+                Nenhuma música
+
+            </div>
+
+            <div id="current-playlist">
+
+                -
+
+            </div>
+
+        </div>
+
+        <div class="player-center">
+
+            <div class="controls">
+                <button id="btn-prev">⏮</button>
+                <button id="btn-play">▶</button>
+                <button id="btn-next">⏭</button>
+            </div>
+
+            <audio id="audio"></audio>
+
+            <input id="progress" type="range" value="0" min="0" max="100">
+
+        </div>
+
+        <div class="volume">
+
+            🔊
+
+            <input id="volume" type="range" value="100" min="0" max="100">
+
+        </div>
+
+    </footer>
+
+    <script src="js/crawler.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

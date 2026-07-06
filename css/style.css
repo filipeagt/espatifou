@@ -1,0 +1,584 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:#121212;
+    color:white;
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    height:100vh;
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+.app{
+
+    flex:1;
+
+    display:flex;
+
+    overflow:hidden;
+
+}
+
+/****************************/
+
+.sidebar{
+
+    width:260px;
+
+    background:#000;
+
+    padding:0px;
+
+    border-right:1px solid #222;
+
+    overflow-y:auto;
+
+}
+
+.sidebar h1{
+
+    color:#1DB954;
+
+    margin-bottom:30px;
+
+}
+
+.sidebar h2{
+
+    font-size:16px;
+
+    color:#999;
+
+    margin-bottom:15px;
+
+}
+
+.sidebar h2 {
+    margin: 5px 10px;
+}
+
+#playlist-list{
+
+    list-style:none;
+
+}
+
+.playlist{
+
+    padding: 12px;
+
+    margin: 10px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    margin-bottom:6px;
+
+    transition:.2s;
+
+}
+
+.playlist:hover{
+
+    background:#202020;
+
+}
+
+.playlist.active{
+
+    background:#1DB954;
+
+    color:black;
+
+    font-weight:bold;
+
+}
+
+/****************************/
+
+.content{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+    margin: 10px;
+
+}
+
+.header{
+
+    padding:20px;
+    background-color: #1db95415;
+    border-radius: 8px;
+
+    border-bottom:1px solid #222;
+
+}
+
+#playlist-title{
+
+    font-size:24px;
+
+    font-weight:bold;
+
+}
+
+#music-count{
+
+    margin-top:8px;
+
+    color:#999;
+
+}
+
+/****************************/
+
+.music-list{
+
+    flex:1;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+}
+
+table{
+
+    border-collapse:collapse;
+
+}
+
+thead{
+
+    position:sticky;
+
+    top:0;
+
+    background:#181818;
+
+}
+
+th{
+
+    text-align:left;
+
+    padding:10px;
+
+    color:#999;
+
+}
+
+td{
+    padding:10px 15px;
+
+    border-bottom:1px solid #1f1f1f;
+
+}
+
+tbody tr{
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+tbody tr:hover{
+
+    background:#202020;
+
+}
+
+tbody tr.playing{
+
+    color:#1DB954;
+
+    font-weight:bold;
+
+}
+
+/****************************/
+
+.player {
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: 100px;
+
+    background: #181818;
+    border-top: 1px solid #333;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px 15px;
+
+    z-index: 999;
+}
+
+.music-info{
+
+    width:300px;
+
+}
+
+#current-title{
+
+    font-weight:bold;
+
+    margin-bottom:8px;
+
+}
+
+#current-playlist{
+
+    color:#999;
+
+}
+
+.player-center {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    gap: 8px;
+
+}
+
+.player-center div,
+.player-center {
+    display: flex;
+}
+
+.player-center button{
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:28px;
+
+    margin:0 8px;
+
+    cursor:pointer;
+
+}
+
+.player-center button:hover{
+
+    color:#1DB954;
+
+}
+
+#progress{
+
+    width:100%;
+    accent-color: #1ed760;
+    margin-top:10px;
+
+
+}
+
+.volume{
+
+    width:220px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+#volume{
+    accent-color: #1ed760;
+    width:160px;
+}
+
+/* Ícone da primeira coluna */
+
+.col-icon {
+
+    display: inline-block;
+
+    padding-right: 19px;
+
+    text-align: center;
+
+    color: #999;
+
+    font-size: 18px;
+
+}
+
+/* Linha em execução */
+
+tr.playing {
+
+    color: #1DB954;
+
+    font-weight: bold;
+
+}
+
+/* Ícone da música tocando */
+
+tr.playing .col-icon {
+
+    color: #1DB954;
+    padding-right: 5px;
+
+}
+
+/* Hover */
+
+tbody tr:hover {
+
+    background: #202020;
+
+}
+
+tbody tr:hover .col-icon {
+
+    color: white;
+    
+
+}
+
+@media (max-width: 768px) {
+
+    .app {
+        flex-direction: column;
+    }
+
+    /* Sidebar vira topo */
+    .sidebar {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        border-right: none;
+        border-bottom: 1px solid #222;
+    }
+
+    #playlist-list {
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .playlist {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    /* Conteúdo ocupa menos espaço */
+    .content {
+        flex: 1;
+        padding-bottom: 110px;
+
+    }
+
+    /* Tabela vira bloco */
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tbody tr {
+        margin-bottom: 10px;
+        padding: 10px;
+        background: #181818;
+        border-radius: 8px;
+    }
+
+    td {
+        padding: 5px 0;
+    }
+
+    /* Player mais compacto */
+    .player {
+        flex-direction: column;
+        height: auto;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .player-center {
+        width: 100%;
+    }
+
+    .volume {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .player {
+
+    height: 100px;
+    flex-direction: row;
+    gap: 10px;
+
+    }
+
+    .music-info {
+        display: none;
+    }
+
+    .player-center {
+        width: 100%;
+    }
+
+    .volume {
+        display: none;
+    }
+
+    .side-header h1 {
+        display: none;
+    }
+
+
+}
+
+.player-center {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    gap: 8px;
+
+}
+
+.controls {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+}
+
+.controls button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#btn-play {
+
+    font-size: 38px;
+    font-weight: bolder;
+    color: #1DB954;
+
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    transition: 0.2s;
+
+}
+
+#btn-play:hover {
+
+    transform: scale(1.1);
+
+    color: #1ed760;
+
+}
+
+#btn-prev,
+#btn-next {
+
+    font-size: 22px;
+
+    color: #b3b3b3;
+
+}
+
+#btn-prev:hover,
+#btn-next:hover {
+
+    color: white;
+
+    transform: scale(1.1);
+
+}
+
+.search-box{
+    margin:20px 0px;
+}
+
+#search{
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#202020;
+
+    color:white;
+
+    font-size:15px;
+
+}
+
+#search:focus{
+
+    outline:2px solid #1DB954;
+
+}
+
+.side-header {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 10px;
+}
+
+.side-header h1 {
+    margin: 0;
+}
+
+.side-header img.logo {
+    height: 48px;
+    border-radius: 8px;
+}
+
